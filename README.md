@@ -48,6 +48,7 @@ docker run -it --rm \
 ```bash
 docker run -it --rm \
   -v "$PWD/vmdata:/vmdata" \
+  -p 2026:2026 \
   -e RAM=7900 \
   -e CPU=3 \
   -e DISK_SIZE=100G \
