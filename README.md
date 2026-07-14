@@ -29,7 +29,6 @@ docker run -it --rm \
   -e CPU=2 \
   -e DISK_SIZE=25G \
   walksysdev/debian-vm
-
 ```
 
 ### 💻 Performance Profile (8GB RAM, 4 CPU Cores, 50GB Storage Disk)
@@ -42,7 +41,6 @@ docker run -it --rm \
   -e CPU=4 \
   -e DISK_SIZE=50G \
   walksysdev/debian-vm
-
 ```
 
 ### 📦 CodeSanxBox VPS Profile (Defaults: 8GB RAM, 3 Cores, 100GB Storage Disk)
@@ -55,7 +53,6 @@ docker run -it --rm \
   -e CPU=3 \
   -e DISK_SIZE=100G \
   walksysdev/debian-vm
-
 ```
 
 
@@ -78,14 +75,12 @@ If you want to pull down the source configurations or compile the container manu
 
 ```bash
 docker pull walksysdev/debian-vm:latest
-
 ```
 
 ### Manual Compilation Pipeline
 
 ```bash
 docker build -t walksysdev/debian-vm .
-
 ```
 
 
