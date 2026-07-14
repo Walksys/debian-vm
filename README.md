@@ -24,6 +24,7 @@ Fire up your Virtual Private Server (VPS) by passing your desired hardware capac
 ```bash
 docker run -it --rm \
   -v "$PWD/vmdata:/vmdata" \
+  -p 2026:2222 \
   -e RAM=4098 \
   -e CPU=2 \
   -e DISK_SIZE=25G \
@@ -36,6 +37,7 @@ docker run -it --rm \
 ```bash
 docker run -it --rm \
   -v "$PWD/vmdata:/vmdata" \
+  -p 2026:2222 \
   -e RAM=8192 \
   -e CPU=4 \
   -e DISK_SIZE=50G \
