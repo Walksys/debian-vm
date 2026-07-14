@@ -45,7 +45,7 @@ docker run -it --rm \
 
 ```
 
-### 📦 CodeSanxBox Standard Mode (Defaults: 8GB RAM, 3 Cores, 100GB Storage Disk)
+### 📦 CodeSanxBox VPS Profile (Defaults: 8GB RAM, 3 Cores, 100GB Storage Disk)
 
 ```bash
 docker run -it --rm \
