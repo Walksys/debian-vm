@@ -43,7 +43,7 @@ docker run -it --rm \
   walksysdev/debian-vm
 ```
 
-### 📦 CodeSanxBox VPS Profile (Defaults: 8GB RAM, 3 Cores, 100GB Storage Disk)
+### 📦 CodeSanxBox VPS Profile (Defaults: 8GB RAM, 4 Cores, 100GB Storage Disk)
 
 ```bash
 docker run -it --rm \
