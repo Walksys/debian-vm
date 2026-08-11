@@ -11,18 +11,21 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
+ENV RAM=7900
+ENV CPU=3
+ENV DISK_SIZE=100G
+ENV IMAGE_URL=https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-generic-amd64.qcow2
+
 RUN mkdir -p /vmdata
 WORKDIR /vmdata
 
 RUN echo '#!/bin/bash' > /entrypoint.sh && \
     echo 'set -e' >> /entrypoint.sh && \
-    echo ': "${RAM:=7900}"' >> /entrypoint.sh && \
-    echo ': "${CPU:=3}"' >> /entrypoint.sh && \
-    echo ': "${DISK_SIZE:=100G}"' >> /entrypoint.sh && \
-    echo ': "${IMAGE_URL:=https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-generic-amd64.qcow2}"' >> /entrypoint.sh && \
     echo 'IMAGE_NAME=$(basename "$IMAGE_URL")' >> /entrypoint.sh && \
     echo 'clear' >> /entrypoint.sh && \
+    echo 'echo "[*] Cleaning old images to ensure fresh start..."' >> /entrypoint.sh && \
     echo 'rm -f "$IMAGE_NAME"' >> /entrypoint.sh && \
+    echo 'echo "[*] Downloading fresh Debian VPS Image..."' >> /entrypoint.sh && \
     echo 'curl -L -# -o "$IMAGE_NAME" "$IMAGE_URL"' >> /entrypoint.sh && \
     echo 'qemu-img resize "$IMAGE_NAME" "$DISK_SIZE" > /dev/null 2>&1' >> /entrypoint.sh && \
     echo 'cat <<EOF > user-data' >> /entrypoint.sh && \
@@ -33,6 +36,7 @@ RUN echo '#!/bin/bash' > /entrypoint.sh && \
     echo '  list: |' >> /entrypoint.sh && \
     echo '    root:root' >> /entrypoint.sh && \
     echo '  expire: false' >> /entrypoint.sh && \
+    echo 'runcmd:' >> /entrypoint.sh && \
     echo 'EOF' >> /entrypoint.sh && \
     echo 'echo "instance-id: walksysdev-vps" > meta-data' >> /entrypoint.sh && \
     echo 'echo "local-hostname: WalksysDev" >> meta-data' >> /entrypoint.sh && \
